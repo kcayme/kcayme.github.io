@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="icon" href="images/title.png" type="image/png">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
@@ -13,20 +13,26 @@
 
   	<body>
 		
-		<nav>
-			<ul class="menu">
-				<li class="logo"><img src="images/logo.png" alt="Resume Logo" height="85" width="85"></li>
-				<li class="item"><a href="#About">About</a></li>
-				<li class="item"><a href="#Exp">Experience</a></li>
-				<li class="item"><a href="#Skills">Skills</a></li>
-				<li class="item"><a href="#Educ">Education</a></li>
-				<li class="item"><a href="#Cert">Certifications</a></li>
-				<li class="item"><a href="#Others">Others</a></li>	
-				<li class="toggle"><a href="#"><i class="fas fa-bars"></i></a></li>
-			</ul>
-			
+		<nav class="navbar">
+			<div class="navbar-content">
+				<div class="logo"><img src="images/logo.png" alt="Resume Logo"></div>
+				<ul class="menu">
+					<div class="icon cancel-btn">
+						<i class="fas fa-times"></i>
+					</div>
+					<li><a href="#About">About</a></li>
+					<li><a href="#Exp">Experience</a></li>
+					<li><a href="#Skills">Skills</a></li>
+					<li><a href="#Educ">Education</a></li>
+					<li><a href="#Cert">Certifications</a></li>
+					<li><a href="#Others">Others</a></li>	
+				</ul>
+				<div class="icon toggle-btn">
+					<i class="fas fa-bars"></i>
+				</div>
+			</div>
 		</nav>	
-		
+		<div class="banner"></div>
 		<a id="About"></a>
 		<div class="about">
 			<div class="about-box">
@@ -34,7 +40,7 @@
 					<div class="info">
 						<div class="head">
 							<h1>Karl Jensen F. Cayme</h1>
-							<h5>Undergraduate Computer Engineer</h5>
+							<h4>Undergraduate Computer Engineer</h5>
 						</div>
 						<br>
 						<a target="_blank"><img src="images/2.png" align="center" height="30" width="30"></a>
@@ -45,11 +51,11 @@
 						  Tayud, Liloan, Cebu, Philippines 6002<br>
 						<a target="_blank"><img src="images/5.png" align="center" height="30" width="30"></a>
 						January 13, 2000
-						<br><br>
-						<div class="bar">
-							<hr>
-						</div>
+						<br>
 						<div class="socials">
+							<div class="bar">
+								<hr>
+							</div>
 							<a href="https://www.linkedin.com/in/kcayme/" target="_blank">
 								<img src="images/LI-In-Bug.png" height="30"></a>
 							<a href="https://github.com/kaloyhedge" target="_blank">

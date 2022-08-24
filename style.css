@@ -33,13 +33,22 @@ html {
     scroll-behavior: smooth;
     height: 100%;
 }
-
+/* custom scroll bar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
 h1{
     font-weight: 700;
     font-size: 24pt;
     color: var(--black)!;
 }
-h5{
+h4{
     font-weight: 700;
     color: var(--blue);
 }
@@ -48,37 +57,43 @@ p{
     font-weight: 300;
 }
 
-hr{
-    width: 400px;
-    margin: auto;
-    height: 3px;
-    background-color: var(--black);
-}
-
-.logo{
+.navbar img{
     cursor: pointer;
+    height: 70px;
+    width: 70px;
+}
+.navbar-content{
+    max-width: 1250px;
+    margin: auto;
+    padding: 0px 30px;
 }
 
-nav{
-    background-color: var(--white);
-    padding: 0 15px;
-    box-shadow:0px 1px 3px #494949;
-    animation: nav-load var(--nav-load-time) ease-in;
+.navbar{
     position: fixed;
+    z-index: 5;
     width: 100%;
-    z-index: 1;
+    padding: 15px 0;
+    transition: all 0.3s ease;
 }
-.menu{
-    list-style-type: none;
+
+.navbar.sticky{
+    padding: 10px 0;
+    background: #1b1b1b;
+    box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.1);
 }
-@keyframes nav-load{
-    0%{
-        transform: translateY(-100%);
-    }
-    100%{
-        transform: translateY(0);
-    }
+
+.navbar .navbar-content{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
+
+.navbar .menu{
+    display: inline-flex;
+    text-transform: uppercase;
+    gap: 1rem;
+}
+
 .to-top{
     position: fixed;
     width: 50px;
@@ -86,11 +101,7 @@ nav{
     bottom: 40px;
     right: 40px;
 }
-
-.item{
-    padding: 10px;
-}
-.item a::after{
+.menu li a::after{
     content: "";
     position: absolute;
     background-color: #e44646;
@@ -101,7 +112,7 @@ nav{
     transition: 0.3s;
 }
 
-.item a:hover::after{
+.menu li a:hover::after{
     content: "";
     position: absolute;
     background-color: #e44646;
@@ -119,13 +130,15 @@ nav{
 /* Mobile Menu*/
 .menu{
     display: flex;
+    list-style-type: none;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 }
 .menu li a{
     position: relative;
-    color: var(--dark);
+    font-weight: 500;
+    color: var(--white);
     display: block;
     padding: 15px 5px;
 }
@@ -134,105 +147,141 @@ nav{
     order: 1;
     font-size: 20px;
 }
+.banner{
+    height: 100vh;
+    background: url("images/banner.png") no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+  }
 
-.item {
-    order: 2;
-    width: 100%;
-    text-align: center;
+.icon{
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+  }
+  .icon.cancel-btn{
+    position: absolute;
+    right: 30px;
+    top: 20px;
+  }
+  .navbar.sticky .icon.cancel-btn{
+    top: 10px;
+  }
+  /* Mobile Menu*/
+  @media (max-width: 868px) {
+    body.disabledScroll{
+      overflow: hidden;
+    }
+    .icon{
+      display: block;
+      height: 50px;
+      width: 50px;
+      text-align: center;
+      line-height: 50px;
+      border-radius: 50%;
+      z-index: 9;
+    }
+    .icon.cancel-btn{
+      display: none;
+    }
+    .icon.cancel-btn.show{
+      display: block;
+    }
+    .icon.hide{
+      display: none;
+    }
+    .navbar .menu{
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      width: 100%;
+      background: #1b1b1b;
+      display: block;
+      text-align: center;
+      clip-path: circle(25px at calc(100% - 55px) calc(0% + 50px));
+      transition: all 0.3s ease;
+    }
+    .navbar.sticky .menu{
+      clip-path: circle(25px at calc(100% - 55px) calc(0% + 35px));
+    }
+    .navbar .menu.active{
+      clip-path: circle(75%);
+    }
+    .navbar .menu li{
+      margin-top: 30px;
+    }
+    .navbar .menu li a{
+      font-size: 20px;
+    }
+  }
+
+.skills, .educ, .certs, .others, .experience{
+    
     display: none;
 }
-
-.active .item {
-    display: block;
-    transition: 0.3s;
-}
-
-/* Tablet Menu*/
-@media all and (min-width: 700px) {
-    .menu{
-        justify-content: center;
-    }
-    .logo{
-        flex: 1;
-    }
-    .toggle{
-        flex: 1;
-        text-align: right;
-        order: 1;
-    }
-}
-
-@media all and (min-width: 960px){
-    .item{
-        order: 1;
-        position: relative;
-        display: block;
-        width: auto;
-    }
-    .toggle{
-        display: none;
-    }
-}
-.about, .career, .skills, .educ, .certs, .others{
-    height: 100%;
-}
 .about{
-    display: block;
     background-color: var(--blue);
-    margin: auto;
-    padding-top: 140px;
-    padding-bottom: 60px;
+    margin: 0;
+    height: 100%;
+    width: 100%;
     text-align: center;
+    display: flex;
+    padding-top: 20px;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
 }
 
     .about-box{
-        margin: auto;
-        background-color: white;
+        margin: 0;
+        width: 100%;
+        flex-direction: column-reverse;
         justify-content: center;
+        align-items: center;
         display: flex;
-        min-width: 60%;
-        max-width: 100%;
-        height: 400px;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        height: fit-content;
     }
     .left-pane{
-        width: 400px;
+        background-color: var(--white);
+        margin: 0;
+        display: flex;
+        width: fit-content;
+        padding: 10px 30px;
+        height: fit-content;
     }
     .head{
-        padding-top: 10%;
         display: inline-block;
-        justify-content: left;
+        text-align: center;
         text-decoration: none;
+        padding-bottom: 30px;
         margin: 0;
         line-height: 1.3;
-        padding-bottom: 30px;
     }
 
     .info{
         display: inline-block;
-        padding-left: 35px;
         justify-content: left;
         text-align: left;
         text-decoration: none;
         line-height: 2.5;
         font-weight: 400;
-        width: 500px;
     }
 
     .socials{
         display: inline-block;
-        padding-top: 10px;
         display: flexbox;
         justify-content: space-between;
     }
 
     .bar{
-        width: 10px;
-        background-color: var(--blue);
+        width: 100%;
+        padding: 15px 0;
+    }
+    .bar hr{
+        background-color:  #1b1b1b;
     }
     .profile{
         height: 400px;
@@ -240,17 +289,26 @@ nav{
     }
 
 .career{
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
     background-color: var(--white);
+    font-size: 16px;
+    font-weight: 500;
     margin: auto;
-    padding-top: 60px;
-    padding-bottom: 60px;
-    height: 300px;
-    padding-left: 120px;
-    padding-right: 120px;
-    text-align: center;
+    height: 100%;
+    padding: 0 15px;
     text-decoration: none;
-    line-height: 2.2;   
+    line-height: 2.5;   
+}
+.career h1{
+    text-align: center;
+}
+.career p{
+    text-align: justify;
 }
 .experience{
     background-color: var(--green);
@@ -316,6 +374,7 @@ nav{
 .skills{
     background-color: var(--yellow);
     padding-top: 100px;
+    width: 100%;
     text-align: center;
     text-decoration: none;
 }
@@ -513,8 +572,6 @@ nav{
 .others{
     background-color: var(--white);
     padding-top: 100px;
-    margin-left: 20%;
-    margin-right: 20%;
 }
     .others-head{
         display: flex;
@@ -664,7 +721,4 @@ nav{
         background-color: var(--black);
     }
 
-    .icon{
-        animation: enlarge 1.5s ease-in alternate forwards infinite;
-    }
     

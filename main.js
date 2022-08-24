@@ -1,20 +1,21 @@
-const toggle = document.querySelector(".toggle");
+const body = document.querySelector("body");
+const navbar = document.querySelector(".navbar");
 const menu = document.querySelector(".menu");
- 
-/* Toggle mobile menu */
-function toggleMenu() {
-    if (menu.classList.contains("active")) {
-        menu.classList.remove("active");
-         
-        // adds the menu (hamburger) icon
-        toggle.querySelector("a").innerHTML = "<i class=\"fas fa-bars\"></i>";
-    } else {
-        menu.classList.add("active");
-         
-        // adds the close (x) icon
-        toggle.querySelector("a").innerHTML = "<i class=\"fas fa-times\"></i>";
-    }
+const menuBtn = document.querySelector(".toggle-btn");
+const cancelBtn = document.querySelector(".cancel-btn");
+menuBtn.onclick = ()=>{
+    menu.classList.add("active");
+    menuBtn.classList.add("hide");
+    cancelBtn.classList.add("show");
+    body.classList.add("disabledScroll");
 }
- 
-/* Event Listener */
-toggle.addEventListener('click', toggleMenu, false);
+cancelBtn.onclick = ()=>{
+    menu.classList.remove("active");
+    menuBtn.classList.remove("hide");
+    cancelBtn.classList.remove("show");
+    body.classList.remove("disabledScroll");
+}
+
+window.onscroll = ()=>{
+    this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+}

@@ -3,6 +3,7 @@ const navbar = document.querySelector(".navbar");
 const menu = document.querySelector(".menu");
 const menuBtn = document.querySelector(".toggle-btn");
 const cancelBtn = document.querySelector(".cancel-btn");
+const toTop = document.querySelector(".to-top")
 menuBtn.onclick = ()=>{
     menu.classList.add("active");
     menuBtn.classList.add("hide");
@@ -17,5 +18,12 @@ cancelBtn.onclick = ()=>{
 }
 
 window.onscroll = ()=>{
-    this.scrollY > 20 ? navbar.classList.add("sticky") : navbar.classList.remove("sticky");
+    if(this.scrollY > 20) {
+        navbar.classList.add("sticky");
+        toTop.classList.add("show");
+    }
+    else{
+        navbar.classList.remove("sticky");
+        toTop.classList.remove("show")
+    } 
 }

@@ -96,13 +96,29 @@ p{
     gap: 1rem;
 }
 
+.to-top, .to-top a{
+    color: var(--white);
+}
 .to-top{
     position: fixed;
     width: 50px;
     height: 50px;
     bottom: 40px;
     right: 40px;
+    text-decoration: none;
+    font-size: 30px;
+    background-color: #1b1b1b;
+    text-align: center;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    border-radius: 100%;
+    z-index: 1;
 }
+.to-top.show{
+    display: flex;
+}
+
 .menu li a::after{
     content: "";
     position: absolute;
@@ -153,6 +169,30 @@ p{
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+  }
+  .intro,.subtitle{
+    font-family: "Open Sans", sans-serif;
+    font-size: 5em;
+    text-shadow: #212121;
+    line-height: 0.9em;
+    position: relative;
+    width: 100%;
+    padding: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 900;
+    color: var(--white);
+  }
+  .subtitle{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.5em;
+    width: fit-content;
+    padding-bottom: 5%;
+  }
+  .subtitle hr{
+    background-color: greenyellow;
+    width: 100%;
   }
 
 .icon{
@@ -221,12 +261,12 @@ p{
 .about{
     background-color: var(--blue);
     margin: 0;
-    height: 100%;
+    height: fit-content;
     width: 100%;
     text-align: center;
     display: flex;
-    padding-top: 20rem;
-    padding-bottom: 20rem;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
     justify-content: center;
     align-items: center;
     text-decoration: none;
@@ -562,36 +602,39 @@ p{
 .others{
     background-color: var(--white);
     display: flex;
-    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
     padding: 2rem;
     height: fit-content;
     width: 100%;
 }
-    .others-head{
-        display: flex;
-        justify-content: center;
-    }
 
     .head-1{
         text-decoration: none;
-    }
-    .head-2{
-        text-decoration: none;
+        justify-content: center;
+        align-items: center;
     }
 
-    .lang{
+    .lang-header{
         display: flex;
-        flex-direction:column;
-        justify-content: center;
+        gap: 1rem;
+        padding-bottom: 3vh;
+    }
+    .lang{
         text-align: left;
-        width: 350px;
+        width: 100%;
+        height: fit-content;
         font-family: "Open Sans", sans-serif;
         font-weight: 400;
         font-size: 18pt;
-        gap: 40px;
+        display: flex;
+        flex-direction: column;
+    }
+    .eng,.fil,.ceb{
+        padding-bottom: 0.8rem;
     }
     .progress{
-        width: 200px;
+        width: 100%;
         height: 30px;
         background: var(--light);
         border-radius: 20px;
@@ -658,24 +701,15 @@ p{
         bottom: 0;
         left: 40%;
     }
-
-    .int{
-        justify-content: stretch;
-        text-align: start;
-        width: fit-content;
-        font-family: "Open Sans", sans-serif;
-        font-weight: 400;
-        font-size: 18pt;
-        gap: 30px;
-    }
     .footer {
-        padding-left: 50px;
-        padding-top: 30px;
+        padding: 2rem 0;
+        display: flex;
+        justify-content: center;
         color: var(--white);
         bottom:0;
         left:0;
         width:100%;
-        height: 90px;
+        height: fit-content;
         background-color: var(--black);
     }
 

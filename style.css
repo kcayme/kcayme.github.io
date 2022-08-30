@@ -164,24 +164,29 @@ p{
     font-size: 20px;
 }
 .banner{
-    height: 100vh;
+    height: 100%;
     background: url("images/banner.png") no-repeat;
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+  }
+  .banner-text{
+    position: relative;
+    width: 100%;
+    top: 40%;
+    animation: slideIn 1s ease-in;
   }
   .intro,.subtitle{
     font-family: "Open Sans", sans-serif;
     font-size: 5em;
     text-shadow: #212121;
     line-height: 0.9em;
-    position: relative;
-    width: 100%;
-    padding: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
     font-weight: 900;
     color: var(--white);
+  }
+  .intro{
+    padding: 2rem;
+    animation-delay: 1s;
   }
   .subtitle{
     font-style: normal;
@@ -189,12 +194,32 @@ p{
     font-size: 1.5em;
     width: fit-content;
     padding-bottom: 5%;
+    padding: 2rem;
   }
   .subtitle hr{
     background-color: greenyellow;
     width: 100%;
   }
 
+  @keyframes slideIn {
+    0%{
+        transform: translateX(-30px);
+        opacity: 0%;
+    }
+    100%{
+        transform: translateX(0px);
+        opacity: 100%;
+    }
+    
+  }
+  @media (min-width: 868px) {
+    .intro, .subtitle{
+        padding-left: 25rem;
+    }
+    .intro{
+        font-size: 8em;
+    }
+  }
 .icon{
     color: #fff;
     font-size: 20px;
@@ -274,18 +299,18 @@ p{
 
     .about-box{
         margin: 0;
-        width: 100%;
+        width: fit-content;
         flex-direction: column-reverse;
         justify-content: center;
         align-items: center;
         display: flex;
+        padding: 1rem;
         height: fit-content;
+        background-color: var(--white);
     }
     .left-pane{
-        background-color: var(--white);
-        margin: 0;
         display: flex;
-        width: fit-content;
+        width: 100%;
         padding: 10px 30px;
         height: fit-content;
     }
@@ -306,11 +331,9 @@ p{
         line-height: 2.5;
         font-weight: 400;
     }
+    .info img{
+        margin-right: 10px;
 
-    .socials{
-        display: inline-block;
-        display: flexbox;
-        justify-content: space-between;
     }
 
     .bar{
@@ -321,8 +344,22 @@ p{
         background-color:  #1b1b1b;
     }
     .profile{
-        height: 400px;
+        height: fit-content;
+        display: flex;
+    }
+    .profile img{
+        height: 100%;
         width: 320px;
+        object-fit: cover;
+    }
+    @media (min-width: 868px) {
+        .about-box{
+            flex-direction: row;
+            padding: 0;
+        }
+        .left-pane{
+            width: 30rem;
+        }
     }
 
 .career{
@@ -330,23 +367,28 @@ p{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100%;
+    height: fit-content;
     width: 100%;
     background-color: var(--white);
     font-size: 16px;
-    font-weight: 500;
-    margin: auto;
-    height: 100%;
-    padding: 0 15px;
+    padding: 5rem 0;
     text-decoration: none;
-    line-height: 2.5;   
 }
 .career h1{
     text-align: center;
 }
-.career p{
+.career-text{
     text-align: justify;
+    line-height: 2.5;  
+    padding: 1rem;
 }
+
+@media (min-width: 868px) {
+    .career-text{
+        width: 50rem;
+    }
+}
+
 .experience{
     background-color: var(--green);
     padding-top: 5rem;
@@ -356,7 +398,6 @@ p{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
     text-align: center;
     text-decoration: none;
     padding-left: 12rem;
@@ -366,6 +407,7 @@ p{
         display: grid;
         padding-top: 5%;
         width: 100%;
+        width: 50rem;
         grid-row-gap: 35px;
         grid-column-gap: 10px;
         grid-template-columns: 0.5fr 1fr;
@@ -397,6 +439,7 @@ p{
         .grid-container{
             grid-template-columns: auto;
             row-gap: 0;
+            width: 100%;
         }
         .r1, .r2, .r3, .r4{
             background-color: transparent;
@@ -598,23 +641,26 @@ p{
 
 .certs{
     background-color: var(--red);
-    padding-top: 100px;
     justify-content: center;
     text-align: center;
     color: var(--white);
-    padding: 2rem;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 5rem 0;
 }
 
     .cert-details{
         display: flex;
         flex-direction: column;
         padding-top: 30px;
-        text-align: center;
+        width: fit-content;
+        text-align: justify;
         align-items: left;
     }
     .cert-details li{
-        list-style: none;
-        padding-bottom: 20px;
+        list-style: outside;
+        line-height: 25px;
     }
 
 .others{
@@ -720,9 +766,9 @@ p{
         left: 40%;
     }
     .footer {
-        padding: 2rem 0;
+        padding: 2.5rem 2rem;
         display: flex;
-        justify-content: center;
+        justify-content: flex-start;
         color: var(--white);
         bottom:0;
         left:0;

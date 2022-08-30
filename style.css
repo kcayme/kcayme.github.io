@@ -349,8 +349,8 @@ p{
 }
 .experience{
     background-color: var(--green);
-    padding-top: 10%;
-    padding-bottom: 10%;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
     height: fit-content;
     display: flex;
     flex-direction: column;
@@ -359,15 +359,17 @@ p{
     width: 100%;
     text-align: center;
     text-decoration: none;
+    padding-left: 12rem;
+    padding-right: 12rem;
 }
     .grid-container {
         display: grid;
         padding-top: 5%;
-        justify-content: center;
         width: 100%;
         grid-row-gap: 35px;
         grid-column-gap: 10px;
-        grid-template-columns: 15% 75%;
+        grid-template-columns: 0.5fr 1fr;
+        flex-wrap: wrap;
     }
     .r1, .r2, .r3, .r4{
         display: flex;
@@ -388,10 +390,27 @@ p{
         text-align: justify;
         background-color: var(--white);
     }
+    @media (max-width: 868px) {
+        .experience{
+            padding: 5rem;
+        }
+        .grid-container{
+            grid-template-columns: auto;
+            row-gap: 0;
+        }
+        .r1, .r2, .r3, .r4{
+            background-color: transparent;
+        }
+        .r1-2,.r2-2,.r3-2,.r4-2{
+            margin-bottom: 1em;
+            padding: 2rem;
+        }
+    }
 
 .skills{
     background-color: var(--yellow);
-    padding-top: 100px;
+    padding-top: 5rem;
+    padding-bottom: 5rem;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -399,17 +418,16 @@ p{
     align-items: center;
     text-align: center;
     text-decoration: none;
+    padding-left: 10rem;
+    padding-right: 10rem;
 }
     .grid-container-2{
         display: grid;
-        padding-top: 15px;
-        padding-bottom: 50px;
         margin-top: 50px;
-        grid-row-gap: 80px;
-        grid-column-gap: 200px;
-        grid-template-columns: 200px 200px 200px;
+        grid-row-gap: 50px;
+        grid-column-gap: 100px;
+        grid-template-columns: 1fr 1fr 1fr;
         align-items: center;
-        justify-content: center;
     }
 
     @media (max-width: 868px) {

@@ -173,7 +173,7 @@ p{
   .banner-text{
     position: relative;
     width: 100%;
-    top: 40%;
+    top: 28%;
     animation: slideIn 1s ease-in;
   }
   .intro,.subtitle{
